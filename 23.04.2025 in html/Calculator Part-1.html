@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .main{
+            width: fit-content;
+            background-color: rgb(8, 171, 253);
+            padding: 15px;
+        }
+        .btn{
+            width: 5px;
+            padding: 12px;
+            margin: 6px;
+            font-size: 19px;
+            background-color: rgb(250, 223, 84);
+            text-align: center;
+        }
+        .screen{
+            margin-bottom: 10px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="main">
+        <input class="screen" name="screen" readonly>
+    <div class="row1">
+        <button class="btn" value="9" onclick="validate(this)">9</button>  
+        <button class="btn" value="8" onclick="validate(this)">8</button> 
+        <button class="btn" value="7" onclick="validate(this)">7</button> 
+        <button class="btn" value="+" onclick="validate(this)">+</button>   
+    </div>
+    <div class="row2">
+        <button class="btn" value="6" onclick="validate(this)">6</button>  
+        <button class="btn" value="5" onclick="validate(this)">5</button> 
+        <button class="btn" value="4" onclick="validate(this)">4</button> 
+        <button class="btn" value="-" onclick="validate(this)"">-</button>   
+    </div>
+    <div class="row3">
+        <button class="btn" value="3" onclick="validate(this)">3</button>  
+        <button class="btn" value="2" onclick="validate(this)">2</button> 
+        <button class="btn" value="1" onclick="validate(this)">1</button> 
+        <button class="btn" value="*" onclick="validate(this)">*</button>   
+    </div>
+    <div class="row4">
+        <button class="btn" onclick="clear()">C</button>  
+        <button class="btn" value="0" onclick="validate(this)">0</button> 
+        <button class="btn" value="/" onclick="validate(this)">/</button> 
+        <button class="btn"  onclick="equal()">=</button>   
+    </div>
+    </div>
+</body>
+</html>
