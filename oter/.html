@@ -83,15 +83,25 @@
   </div>
  <h2><div id="balance">Balance: Rs.0</div></h2>
  <script>
+   var name = document.getElementById("name").value;
+    var password = document.getElementById("password").value;
+    var amount = document.getElementById("amount").value;
+    var accountNumber = document.getElementById("accountNumber").value;
     let balance = 0;
 
+    function onclick() {
+    var name = document.getElementById("name").value;
+    var password = document.getElementById("password").value;
+    var amount = document.getElementById("amount").value;
+    var accountNumber = document.getElementById("accountNumber").value;
+    }
     function updateDisplay() {
       document.getElementById('balance').textContent = `Balance: $${balance.toFixed(2)}`;
     }
     function deposit() {
       const amount = parseFloat(document.getElementById('amount').value);
       if (isNaN(amount) || amount <= 0) {
-        alert('Please enter a valid details to deposit.');
+         document.getElementById("d").innerHTML ="Please enter a valid details to deposit.";
         return;
       }
       balance += amount;
@@ -101,17 +111,18 @@
     function withdraw() {
       const amount = parseFloat(document.getElementById('amount').value);
       if (isNaN(amount) || amount <= 0) {
-        alert('Please enter a valid details to withdraw.');
+         document.getElementById("d").innerHTML ="Please enter a valid details to withdraw.";
         return;
       }
       if (amount > balance) {
-        alert('Insufficient funds!');
+         document.getElementById("d").innerHTML ="Insufficient funds!";
         return;
       }
       balance -= amount;
       updateDisplay();
       document.getElementById('amount').value = ''; 
     }
+
   </script>
     
 
