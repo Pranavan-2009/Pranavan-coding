@@ -28,3 +28,7 @@ y=temp
 
 print("x is ", x)
 print("y is ", y)
+
+name="i am raj"
+print(name[0])
+print(name[0:9])
