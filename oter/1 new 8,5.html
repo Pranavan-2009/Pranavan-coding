@@ -10,7 +10,7 @@
       margin-bottom: 20px;
     }
 
-    .bank-container {
+    #bank-container {
       width: 450px;
       margin: 0 auto;
       padding: 20px;
@@ -26,26 +26,26 @@
       margin-top: 20px;
     }
 
-    h3 {
+    .h3 {
       font-size: 16px;
       margin-bottom: 5px;
     }
 
-    input[type="text"],
-    input[type="number"] {
+    .input[type="text"],
+    .input[type="number"] {
       width: 100%;
       padding: 7px;
       margin-bottom: 15px;
       font-size: 16px;
     }
 
-    input[type="text"]:focus,
-    input[type="number"]:focus {
+    .input[type="text"]:focus,
+    .input[type="number"]:focus {
       border: 2px solid #4CAF50;
       outline: none;
     }
 
-    button {
+    .button {
       width: 100%;
       padding: 10px;
       margin-bottom: 10px;
@@ -65,7 +65,6 @@
     }
 
     #message {
-      color: red;
       text-align: center;
       margin-top: 10px;
     }
@@ -96,6 +95,11 @@
 
   <script>
     let balance = 0;
+    var name = document.getElementById("name").value;
+    var password = document.getElementById("password").value;
+    var amount = document.getElementById("amount").value;
+    var accountNumber = document.getElementById("accountNumber").value;
+    
 
     function updateDisplay() {
       document.getElementById('balance').textContent = `Balance: Rs. ${balance.toFixed(2)}`;
@@ -107,32 +111,63 @@
       messageDiv.textContent = msg;
     }
 
-    function validateInputs() {
-      const name = document.getElementById("name").value.trim();
-      const accountNumber = document.getElementById("accountNumber").value.trim();
-      const password = document.getElementById("password").value.trim();
-      const amountStr = document.getElementById("amount").value.trim();
-      const amount = parseFloat(amountStr);
-
-    
-    if (name.trim() === "") {
-                document.getElementById("d").innerHTML = "Please enter your name";
-    } else if (password === "") {
-                document.getElementById("d").innerHTML = "Please enter your password";
-    } else if (accountNumber === "") {
-        document.getElementById("d").innerHTML = "Please enter your account number";
-    } else if (amount === "") {
-        document.getElementById("d").innerHTML = "Please enter the amount";
-    } else if (amount < 0) {
-        document.getElementById("d").innerHTML = "Amount cannot be negative";
-    } else if (amount > balance) {
-        document.getElementById("d").innerHTML = "low!";
-    } else if (isNaN(amount)) {
-        document.getElementById("d").innerHTML = "Please enter a valid amount";
-    } else {
-        document.getElementById("d").innerHTML = "Successfully logged in";
+    function getElementById() {
+      return {
+        name: document.getElementById("name").value(),
+        accountNumber: document.getElementById("accountNumber").value(),
+        password: document.getElementById("password").value(),
+        amount: parseFloat(document.getElementById("amount").value())
+      };
     }
-} 
+
+    function validateInputs(amount) {
+      const { name, accountNumber, password } = getElementById();
+
+      if (!name) {
+        showMessage("Please enter your name");
+        return false;
+      }
+      if (!accountNumber) {
+        showMessage("Please enter your account number");
+        return false;
+      }
+      if (!password) {
+        showMessage("Please enter your password");
+        return false;
+      }
+      if (isNaN(amount)) {
+        showMessage("Please enter a valid amount");
+        return false;
+      }
+      if (amount < 0) {
+        showMessage("Amount cannot be negative");
+        return false;
+      }
+      return true;
+    }
+    function deposit() {
+      const { amount } = getElementById();
+      if (!validateInputs(amount)) return;
+
+      balance += amount;
+      updateDisplay();
+      showMessage(`Rs. ${amount.toFixed(2)} deposited successfully`, false);
+    }
+
+    function withdraw() {
+      const { amount } = getElementById();
+      if (!validateInputs(amount)) return;
+
+      if (amount > balance) {
+        showMessage("Insufficient balance");
+        showMessage("Insufficient balance");
+        return;
+      }
+
+      balance -= amount;
+      updateDisplay();
+      showMessage(`Rs. ${amount.toFixed(2)} withdrawn successfully`, false);
+    }
   </script>
 </body>
 </html>

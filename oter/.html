@@ -157,5 +157,60 @@ function onclick() {
     }
 }
 </script>
+
+
+function updateDisplay() {
+  document.getElementById('balance').textContent = `Balance: Rs. ${balance.toFixed(2)}`;
+}
+
+function validateInputs() {
+  const name = document.getElementById("name").value.trim();
+  const accountNumber = document.getElementById("accountNumber").value.trim();
+  const password = document.getElementById("password").value.trim();
+  const amountStr = document.getElementById("amount").value.trim();
+  const amount = parseFloat(amountStr);
+
+  if (!name) return "Please enter your name";
+  if (!accountNumber) return "Please enter your account number";
+  if (!password) return "Please enter your password";
+  if (!amountStr) return "Please enter the amount";
+  if (isNaN(amount) || amount <= 0) return "Please enter a valid positive amount";
+
+  return null;
+}
+
+function deposit() {
+  const error = validateInputs();
+  if (error) {
+    showMessage(error);
+    return;
+  }
+
+  const amount = parseFloat(document.getElementById("amount").value);
+  balance += amount;
+  updateDisplay();
+  showMessage("Deposit successful!", false);
+  document.getElementById("amount").value = '';
+}
+
+function withdraw() {
+  const error = validateInputs();
+  if (error) {
+    showMessage(error);
+    return;
+  }
+
+  const amount = parseFloat(document.getElementById("amount").value);
+  if (amount > balance) {
+    showMessage("Insufficient funds!");
+    return;
+  }
+
+  balance -= amount;
+  updateDisplay();
+  showMessage("Withdrawal successful!", false);
+  document.getElementById("amount").value = '';
+}
+
 </body>
 </html>
