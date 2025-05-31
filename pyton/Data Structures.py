@@ -36,3 +36,4 @@ my_dict ={'name':'Raj',1:[2,4,3]}
 my_dict ={'name' : 'Raj','age':20}
 
 print(my_dict['name'])
+
