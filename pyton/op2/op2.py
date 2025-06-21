@@ -32,3 +32,30 @@ class Library:
 if __name__ == '__main__':
         books = Library(['Python','Rich Dad Poor Dad','C++ Basics','Algorithms by CLRS'],"Let's upskill"
         )
+        user_name = input("Welcome to the Library! Please enter your name:")
+
+        while True:
+            print(
+                f"\nHello {user_name}, Welcome to the {books.name} library! Please chose an option:"
+            )
+            print("1. Display Books\n2. Lend  a Book\n3. Add a Book\n4. Return a Book\n5. Quit")
+            user_choice = input ("Enter your choice to continue: ")
+
+            if user_choice not in ['1','2','3','4','5']:
+                print("Please enter a valid option.")
+                continue
+
+            if user_choice == '1':
+                books.displayBooks()
+            elif user_choice == '2':
+                book = input("Enter the name of the book you want to lend:")
+                books.lendBook(user_name,book)
+            elif user_choice == '3':
+                book = input("Enter the name of the book you want to add:")
+                books.addBook(book)
+            elif user_choice == '4':
+                book = input("Enter the name of the book you want to return:")
+                books.lendBook(user_name,book)
+            elif user_choice == '5':
+                print("Thank you for using the library,{user_name}. GoodBye!")
+                break
