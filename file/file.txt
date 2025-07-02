@@ -1,2 +1,0 @@
-file in write mode ....Hi! I am Penguin. I am 1yr.old 
-file in append mode ....Hi! I am Penguin. I am 1yr.old 
