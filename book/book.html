@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lachumi Studio Booking</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #fff8f0;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 40px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border: 2px solid #b8860b;
+    }
+    h2 {
+      text-align: center;
+      color: #b8860b;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      color: #800000;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .services {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .btn {
+      background: #800000;
+      color: white;
+      padding: 10px;
+      border: none;
+      width: 100%;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .btn:hover {
+      background: #a52a2a;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="booking-form">
+    <img src="1.jpg" alt="Lachumi Studio" style="width: 100px; display:block; margin:auto;">
+    <h2>Book Your Appointment</h2>
+    <form id="form">
+      <label>Name</label>
+      <input type="text" id="name" required />
+
+      <label>Email</label>
+      <input type="email" id="email" required />
+
+      <label>Phone Number</label>
+      <input type="text" id="phone" required />
+
+      <label>WhatsApp Number</label>
+      <input type="text" id="whatsapp" required />
+
+      <label>Select Date</label>
+      <input type="date" id="date" required />
+
+      <label>Select Time</label>
+      <select id="time"></select>
+
+      <label>Select Services (Optional)</label>
+      <div class="services">
+        <label><input type="checkbox" value="Photo & Video Editing"> Photo & Video Editing</label>
+        <label><input type="checkbox" value="Album Designing"> Album Designing</label>
+        <label><input type="checkbox" value="Visiting Card Designing"> Visiting Card Designing</label>
+        <label><input type="checkbox" value="Shop Board Designing"> Shop Board Designing</label>
+        <label><input type="checkbox" value="Photo Merging"> Photo Merging</label>
+        <label><input type="checkbox" value="Logo Designing"> Logo Designing</label>
+        <label><input type="checkbox" value="Birthday Card Designing"> Birthday Card Designing</label>
+        <label><input type="checkbox" value="Visses Card Designing"> Visses Card Designing</label>
+        <label><input type="checkbox" value="Invitation Designing"> Invitation Designing</label>
+        <label><input type="checkbox" value="Website Designing"> Website Designing</label>
+      </div>
+      <button type="submit" class="btn">Book Appointment</button>
+    </form>
+  </div>
+
+  <script>
+    emailjs.init("YOUR_EMAILJS_PUBLIC_KEY");
+
+    const openHours = [15, 16, 17, 18, 19, 20];
+    const closedDays = [6];
+
+    function populateTimeSlots() {
+      const timeSelect = document.getElementById('time');
+      timeSelect.innerHTML = '';
+      openHours.forEach(hour => {
+        let hourText = hour > 12 ? `${hour - 12}:00 PM` : `${hour}:00 PM`;
+        let opt = document.createElement('option');
+        opt.value = hourText;
+        opt.innerHTML = hourText;
+        timeSelect.appendChild(opt);
+      });
+    }
+
+    const bookings = JSON.parse(localStorage.getItem("bookings") || "[]");
+
+    document.getElementById("form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const phone = document.getElementById("phone").value;
+      const whatsapp = document.getElementById("whatsapp").value;
+      const date = document.getElementById("date").value;
+      const time = document.getElementById("time").value;
+      const services = Array.from(document.querySelectorAll("input[type='checkbox']:checked")).map(cb => cb.value).join(", ");
+
+      const templateParams = {
+        name: name,
+        email: email,
+        phone: phone,
+        whatsapp: whatsapp,
+        date: date,
+        time: time,
+        services: services
+      };
+
+      emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", templateParams)
+        .then(() => {
+          alert("Appointment booked and email sent!");
+
+          const waMessage = `Hi ${name}, your appointment at Lachumi Studio is confirmed for ${date} at ${time}. Services: ${services || "None"}.`;
+          const waLink = `https://wa.me/91${whatsapp}?text=${encodeURIComponent(waMessage)}`;
+          window.open(waLink, '_blank');
+
+          bookings.push(templateParams);
+          localStorage.setItem("bookings", JSON.stringify(bookings));
+        })
+        .catch(error => alert("Email failed: " + error));
+    });
+
+    populateTimeSlots();
+  </script>
+</body>
+</html>

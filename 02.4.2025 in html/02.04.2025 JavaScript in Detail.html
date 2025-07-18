@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="a1"></p>
+    <p id="a2"></p>
+    <script>
+        x=12;
+        y=15;
+        document.getElementById("a1").innerHTML=(x*y)
+        document.write("<br>")
+        document.getElementById("a2").innerHTML=String(x)+String(y)
+
+        add=()=> {document.write(10*10)}
+        add()
+        
+        document.write("<br>")
+        document.write("<br>")
+
+        try{
+            document.rite("Good Morning !")
+        }
+        catch(err){
+            document.write(err.message)
+        }
+
+    </script>
+</body>
+</html>
