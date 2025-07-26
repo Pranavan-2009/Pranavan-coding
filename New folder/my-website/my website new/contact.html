@@ -5,6 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact | Lachumi Studio</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .whatsapp-float {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background-color: #25D366;
+    color: white;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+    cursor: pointer;
+    z-index: 1000;
+    text-decoration: none;
+  }
+
+    .whatsapp-float img {
+      width: 24px;
+      height: 24px;
+    }
+  </style>
+  <a href="https://wa.me/94774112406" target="_blank" class="whatsapp-float" aria-label="WhatsApp Chat">
+    <img src="https://cdn-icons-png.flaticon.com/24/733/733585.png" alt="WhatsApp" style="width: 24px; height: 24px;">
+</a>
 </head>
 <body>
   <header>
@@ -12,25 +40,104 @@
     <nav id="navbar">
       <a href="index1.html">Home</a>
       <a href="about.html">About</a>
-      <a href="projects.html">Projects</a>
+      <a href="Services.html">Services</a>
+      <a href="gallery.html">Gallery</a>
       <a href="contact.html">Contact</a>
+      <a href="booking.html">Booking</a>
     </nav>
   </header>
   <main>
-    <section >
-            <h2>Contact Us</h2>
-            <p>Email: 14062021studio@gmail.com</p>
-            <p>Phone: +94 78 793 4429</p>
-            <p>Whatsapp: +94 77 411 2406</p>
-            <p>YouTube: <a href="https://youtube.com/@lachumistudio2406?si=fHwqLzuE-rlUhqDB" target="_blank">@lachumi_studio</a></p>
-            <p>Facebook: <a href="https://www.facebook.com/profile.php?id=61574968172765" target="_blank">@Lachumi Studio</a></p>
-            <p>Instagram: <a href="https://www.instagram.com/lachumistudio2406/" target="_blank">@lachumi_studio</a></p>
-            <p>Whatsapp channal: <a href="https://whatsapp.com/channel/0029VaF5yhJA2pL54Ou2m23s" target="_blank">@Lachumi Studio</a></p>
-            <p>Location: B31,G3, <p></p>Maligawatta,Colombo, Sri Lanka</p>
-        </section>
+    <!-- Contact Us Section -->
+<section id="contact" style="background-color: #fff8f0; padding: 60px 20px; font-family: 'Segoe UI', sans-serif;">
+  <div style="max-width: 1100px; margin: auto;">
+    <h2 style="text-align: center; color: #c62828; font-size: 2.5em; margin-bottom: 30px;">Contact Us</h2>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 40px; justify-content: center;">
+
+      <!-- Contact Info -->
+      <div style="flex: 1 1 300px;">
+        <h3 style="color: #d84315;">Lachumi Studio</h3>
+        <p><strong>Address:</strong><br>B31, G3 N.H.S Flats, Maligawatta, Colombo-10</p>
+        <p><strong>Phone:</strong><br>+94 77 292 0470 (Call)<br>+94 77 411 2406 (WhatsApp)</p>
+        <p><strong>Email:</strong><br><a href="mailto:14062021studio@gmail.com">14062021studio@gmail.com</a></p>
+        <p><strong>Working Hours:</strong><br>Mon - Sat: 9:00 AM – 8:00 PM<br>Sunday: By appointment</p>
+      </div>
+
+      <!-- Email Form -->
+      <div style="flex: 1 1 400px;">
+        <h4 style="color:#b71c1c;">Quick Email Message</h4>
+        <form action="https://formsubmit.co/14062021studio@gmail.com" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="box">
+          <input type="text" name="name" placeholder="Your Name" required style="padding: 12px; border-radius: 8px; border: 1px solid #ccc;">
+          <input type="email" name="email" placeholder="Your Email" required style="padding: 12px; border-radius: 8px; border: 1px solid #ccc;">
+          <textarea name="message" rows="5" placeholder="Your Message" required style="padding: 12px; border-radius: 8px; border: 1px solid #ccc;"></textarea>
+          <button type="submit" style="padding: 12px; background-color: #c62828; color: white; border: none; border-radius: 8px; cursor: pointer;">Send Message</button>
+        </form>
+      </div>
+
+      <!-- Google Form Embed -->
+      <div style="flex: 1 1 100%; margin-top: 40px;">
+        <h4 style="color:#b71c1c;">Or Use Our Google Form</h4>
+     
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSct7U24CxOp0447pHXArqwi9I8m7rNOgzifMDbB-ReGGaRaRw/viewform?usp=header" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0" style="border: 1px solid #ccc; border-radius: 10px;"> Loading… </iframe>
+      </div>
+    </div>
+</section>
+
   </main>
-  <footer>
-    <p>&copy; 2025 Lachumi Studio</p>
-  </footer>
+<footer style="background-color: #1c1c1c; color: #f0f0f0; padding: 40px 20px; font-family: 'Segoe UI', sans-serif;">
+  <div style="max-width: 1000px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between;">
+    
+    <!-- Studio Info -->
+    <div style="flex: 1 1 250px; margin-bottom: 20px;">
+      <h3 style="color: #ff9800;">Lachumi Studio</h3>
+      <p>B31, G3 N.H.S Flats,<br>Maligawatta, Colombo-10</p>
+      <p>📞 Call: +94 77 292 0470</p>
+      <p>💬 WhatsApp: +94 77 411 2406</p>
+      <p>✉️ Email: <a href="mailto:14062021studio@gmail.com" style="color: #ffcc80;">14062021studio@gmail.com</a></p>
+    </div>
+
+    <!-- Quick Links -->
+    <div style="flex: 1 1 200px; margin-bottom: 20px;">
+      <h4 style="color: #ff9800;">Quick Links</h4>
+      <ul style="list-style: none; padding: 0;">
+        <li><a href="index1.html" style="color: #ccc; text-decoration: none;">Home</a></li>
+        <li><a href="about.html" style="color: #ccc; text-decoration: none;">About</a></li>
+        <li><a href="Services.html" style="color: #ccc; text-decoration: none;">Services</a></li>
+        <li><a href="gallery.html" style="color: #ccc; text-decoration: none;">Gallery</a></li>
+        <li><a href="#contact" style="color: #ccc; text-decoration: none;">Contact</a></li>
+        <li><a href="booking.html" style="color: #ccc; text-decoration: none;">Booking</a></li>
+      </ul>
+    </div>
+
+    <!-- Tagline and Socials -->
+    <div style="flex: 1 1 250px; margin-bottom: 20px;">
+      <h4 style="color: #ff9800;">Our Passion</h4>
+      <p>"Capturing Moments, Creating Magic"</p>
+      <p>Follow us on:</p>
+      <div style="margin-top: 10px;">
+        <a href="https://facebook.com" target="_blank" style="margin-right: 10px;">
+          <img src="https://cdn-icons-png.flaticon.com/24/733/733547.png" alt="Facebook" />
+        </a>
+        <a href="https://instagram.com" target="_blank" style="margin-right: 10px;">
+          <img src="https://cdn-icons-png.flaticon.com/24/733/733558.png" alt="Instagram" />
+        </a>
+        <a href="https://wa.me/94774112406" target="_blank" style="margin-right: 10px;">
+          <img src="https://cdn-icons-png.flaticon.com/24/733/733585.png" alt="WhatsApp" />
+        </a>
+        <a href="mailto:14062021studio@gmail.com" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/24/732/732200.png" alt="Email" />
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <hr style="border: none; height: 1px; background: #444; margin: 20px 0;">
+  
+  <div style="text-align: center; font-size: 0.9em; color: #999;">
+    &copy; 2025 Lachumi Studio. All rights reserved.
+  </div>
+</footer>
 </body>
 </html>
