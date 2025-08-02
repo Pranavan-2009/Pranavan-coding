@@ -10,10 +10,10 @@
             text-align: center;
         }
         header {
-            background: rgb(118, 219, 18);
+            background: rgb(50, 47, 47);
             color: rgb(255, 254, 254);
             padding: 15px;
-            font-size: 24px;
+            font-size: 36px;
         }
         nav {
             background: #ff004c;
@@ -34,7 +34,7 @@
             margin: 10px;
         }
         .contact {
-            background: #a5ff09;
+            background: #000000;
             padding: 30px;
         }
         .portfolio video {
