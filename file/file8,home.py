@@ -1,11 +1,11 @@
-from tkinter import *
-from Pillow import Image, ImageTk
+# from tkinter import *
+# from Pillow import Image, ImageTk
 
-root = Tk()
-root.title('image')
-root.geometry('400x400')
+# root = Tk()
+# root.title('image')
+# root.geometry('400x400')
 
-uplode = Image.open('img.png')
+# uplode = Image.open('img.png')
 
 
 from tkinter import *
