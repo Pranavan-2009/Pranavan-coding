@@ -1,6 +1,6 @@
 from tkinter import*
 
-window=tk()
+window=Tk()
 window.title("Lachumi studio")
 window.geometry("2048x1024")
 l1=Label(window,text="Welcome to Lachumi Studio",fg="Red")
