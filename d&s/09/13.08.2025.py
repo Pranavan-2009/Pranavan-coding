@@ -11,6 +11,7 @@ if number == resultNumber:
 else:
     print(number, "is not an Armstrong number")
 
+
 def print_factors (number):
     print("The factors of", number, "are:")
     for i in range(1, number + 1):
