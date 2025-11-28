@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lachumi Studio | Single Page Website</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      background: #f8f8f8;
+    }
+
+    header {
+      background: rgb(50, 47, 47);
+      color: rgb(255, 254, 254);
+      padding: 15px;
+      font-size: 36px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav {
+      background: #ff004c;
+      padding: 10px;
+    }
+
+    nav a {
+      color: rgb(245, 245, 245);
+      margin: 15px;
+      text-decoration: none;
+      font-size: 18px;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ff9800;
+    }
+
+    .hero {
+      background: #d81b60;
+      color: white;
+      padding: 4rem 2rem;
+      text-align: center;
+      border-radius: 8px;
+    }
+
+    /* Image Slider Styles */
+    .slider-container {
+      max-width: 900px;
+      position: relative;
+      margin: auto;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .mySlides {
+      display: none;
+    }
+
+    .mySlides img {
+      width: 100%;
+      height: 500px;
+      /* Fixed height for consistent sliding */
+      object-fit: cover;
+    }
+
+    /* Next & previous buttons */
+    .prev,
+    .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 16px;
+      margin-top: -22px;
+      color: white;
+      font-weight: bold;
+      font-size: 30px;
+      transition: 0.6s ease;
+      user-select: none;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 10;
+    }
+
+    .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+
+    .prev {
+      left: 0;
+      border-radius: 0 3px 3px 0;
+    }
+
+    .prev:hover,
+    .next:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    /* Caption text */
+    .text {
+      color: #f2f2f2;
+      font-size: 18px;
+      padding: 8px 12px;
+      position: absolute;
+      bottom: 8px;
+      width: 100%;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    /* The dots/bullets/indicators */
+    .dot {
+      cursor: pointer;
+      height: 15px;
+      width: 15px;
+      margin: 0 4px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+    }
+
+    .active-dot,
+    .dot:hover {
+      background-color: #717171;
+    }
+
+    /* Fading animation */
+    .fade {
+      animation-name: fade;
+      animation-duration: 1.5s;
+    }
+
+    @keyframes fade {
+      from {
+        opacity: .4
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    /* Contact Form Styles */
+    .contact-info-map {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
+      text-align: left;
+    }
+
+    .contact-form {
+      flex: 2 1 400px;
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      margin-bottom: 20px;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .contact-form button {
+      padding: 12px;
+      background-color: #c62828;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    /* Booking Form Styles */
+    .booking-container {
+      max-width: 600px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      border: 4px solid #ffcc00;
+      text-align: left;
+    }
+
+    .booking-container input,
+    .booking-container select,
+    .booking-container textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 5px;
+      border: 1.5px solid #ccc;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    /* Back-to-Top Button */
+    #back-to-top {
+      display: none;
+      position: fixed;
+      bottom: 90px;
+      right: 25px;
+      z-index: 999;
+      border: none;
+      outline: none;
+      background-color: #c62828;
+      color: white;
+      cursor: pointer;
+      padding: 15px;
+      border-radius: 50%;
+      font-size: 18px;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      nav a {
+        display: block;
+        margin: 0.5rem 0;
+      }
+
+      .mySlides img {
+        height: 300px;
+      }
+
+      .contact-info-map {
+        flex-direction: column;
+      }
+    }
+
+    /* Utility Classes */
+    .section-padding {
+      padding: 60px 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .container-small {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .text-justify {
+      text-align: justify;
+    }
+
+    .font-segoe {
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    /* Colors */
+    .text-primary {
+      color: #c62828;
+    }
+
+    .text-secondary {
+      color: #d84315;
+    }
+
+    .text-dark {
+      color: #444;
+    }
+
+    .bg-light {
+      background-color: #f8f8f8;
+    }
+
+    .bg-white {
+      background-color: #ffffff;
+    }
+
+    .bg-cream {
+      background-color: #fff8f5;
+    }
+
+    .bg-orange-light {
+      background-color: #fff3e0;
+    }
+
+    .bg-pink-light {
+      background-color: #fff8f0;
+    }
+
+    /* Component Styles */
+    .btn-primary {
+      display: inline-block;
+      background-color: #ff9800;
+      color: white;
+      padding: 12px 30px;
+      margin-top: 30px;
+      font-size: 1.1em;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .btn-primary:hover {
+      background-color: #e68900;
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      background-color: #c62828;
+      color: white;
+      text-decoration: none;
+      padding: 10px 25px;
+      margin-top: 25px;
+      font-size: 1em;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .btn-secondary:hover {
+      background-color: #b71c1c;
+    }
+
+    .section-title {
+      font-size: 2.5em;
+      color: #c62828;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .info-card {
+      flex: 1 1 250px;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .service-card {
+      flex: 1 1 280px;
+      background-color: white;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .portfolio img {
+      object-fit: cover;
+      margin: 10px;
+    }
+
+    .contact-details {
+      flex: 1 1 300px;
+      padding: 30px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .footer-col {
+      flex: 1 1 250px;
+      margin-bottom: 20px;
+    }
+
+    .footer-link {
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-link:hover {
+      color: #fff;
+    }
+  </style>
+
+  <a href="https://wa.me/94774112406" target="_blank" class="whatsapp-float" aria-label="WhatsApp Chat"
+    style="position: fixed; bottom: 25px; right: 25px; background-color: #25D366; color: white; border-radius: 50%; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: 0 3px 8px rgba(0,0,0,0.3); cursor: pointer; z-index: 1000; text-decoration: none;">
+    <img src="https://cdn-icons-png.flaticon.com/24/733/733585.png" alt="WhatsApp" style="width: 24px; height: 24px;">
+  </a>
+</head>
+
+<body>
+
+  <header>
+    <h1>Lachumi Studio</h1>
+    <nav id="navbar">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+      <a href="#booking">Book Now</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section id="home" style="padding: 0;" class="bg-light">
+      <div class="hero">
+        <h2 style="font-size: 3em; margin-bottom: 10px;">Welcome to Lachumi Studio</h2>
+        <p style="font-size: 1.5em; margin-top: 10px;">Capturing Moments, Creating Magic</p>
+        <a href="#booking" class="btn-primary"> Book Your Shoot Today </a>
+      </div>
+
+      <section id="top-services" style="padding: 40px 20px; background-color: #fcfcfc;">
+        <div class="container-small">
+          <h3 style="font-size: 2em; color: #d81b60; margin-bottom: 30px;">Why Choose Us?</h3>
+          <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 20px;">
+            <div class="info-card">
+              <i class="fas fa-heart fa-2x" style="color: #ff004c; margin-bottom: 10px;"></i>
+              <h4 class="text-dark">Passion for Art</h4>
+              <p>Every shot is a masterpiece.</p>
+            </div>
+            <div class="info-card">
+              <i class="fas fa-users fa-2x" style="color: #ff004c; margin-bottom: 10px;"></i>
+              <h4 class="text-dark">Experienced Team</h4>
+              <p>Professionals dedicated to quality.</p>
+            </div>
+            <div class="info-card">
+              <i class="fas fa-award fa-2x" style="color: #ff004c; margin-bottom: 10px;"></i>
+              <h4 class="text-dark">Custom Solutions</h4>
+              <p>Packages tailored to your needs.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="latest-works" class="bg-cream" style="padding: 60px 20px;">
+        <h2 class="section-title">Featured Moments</h2>
+        <div class="portfolio container">
+          <img src="001.jpg" alt="Portfolio Image 1" style="width: 500px; height: 300px;">
+          <img src="4 (2).jpg" alt="Portfolio Image 2" style="width: 400px; height: 500px;">
+          <img src="1.jpg" alt="Portfolio Image 3" style="width: 500px; height: 500px;">
+
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/YcEytpNhnc0" title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <a href="#gallery" class="btn-secondary"> See Full Gallery </a>
+      </section>
+    </section>
+
+    <section id="about" class="section-padding bg-cream font-segoe">
+      <div class="container-small">
+        <h2 class="section-title">About Lachumi Studio</h2>
+
+        <p class="text-justify text-dark" style="font-size: 1.1em; line-height: 1.9; margin-bottom: 20px;">Welcome to
+          Lachumi Studio, where creativity meets professionalism! Since our inception in 2021, we have been dedicated to
+          delivering high-quality photography, videography, and comprehensive digital media services. Our philosophy is
+          simple: **we capture moments, we create magic.** Every project we undertake, every frame we capture is guided
+          by our passion for storytelling and our dedication to quality.</p>
+
+        <p class="text-justify text-dark" style="font-size: 1.1em; line-height: 1.9; margin-bottom: 20px;">At Lachumi
+          Studio, we believe that every story is unique. That’s why we work closely with each client to understand their
+          vision and bring it to life with creativity and precision. Whether it's a grand celebration or a simple family
+          moment, we ensure that the final output reflects the emotions and memories you cherish.</p>
+
+        <p class="text-justify text-dark" style="font-size: 1.1em; line-height: 1.9;">Our team consists of passionate
+          photographers, skilled videographers, and talented editors who are constantly exploring new techniques and
+          technologies to keep our work fresh and modern. We also provide customized packages to suit your budget and
+          preferences, making high-quality media services accessible to everyone.</p>
+      </div>
+    </section>
+
+    <section id="services" class="section-padding bg-orange-light">
+      <div class="container font-segoe">
+        <h2 class="section-title">Our Services</h2>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+
+          <div class="service-card">
+            <i class="fas fa-camera fa-3x" style="color: #e65100; margin-bottom: 15px;"></i>
+            <h3 class="text-secondary" style="margin-bottom: 10px;">Photography</h3>
+            <p>Studio & outdoor shoots, events, portraits – captured with creativity and quality.</p>
+          </div>
+
+          <div class="service-card">
+            <i class="fas fa-video fa-3x" style="color: #e65100; margin-bottom: 15px;"></i>
+            <h3 class="text-secondary" style="margin-bottom: 10px;">Videography</h3>
+            <p>Cinematic videos for weddings, functions, and professional events.</p>
+          </div>
+
+          <div class="service-card">
+            <i class="fas fa-scissors fa-3x" style="color: #e65100; margin-bottom: 15px;"></i>
+            <h3 class="text-secondary" style="margin-bottom: 10px;">Editing</h3>
+            <p>Photo and video editing with transitions, color correction, and effects.</p>
+          </div>
+
+          <div class="service-card">
+            <i class="fas fa-desktop fa-3x" style="color: #e65100; margin-bottom: 15px;"></i>
+            <h3 class="text-secondary" style="margin-bottom: 10px;">Web Designing</h3>
+            <p>Modern, responsive websites to build your brand online.</p>
+          </div>
+
+          <div class="service-card">
+            <i class="fas fa-paint-brush fa-3x" style="color: #e65100; margin-bottom: 15px;"></i>
+            <h3 class="text-secondary" style="margin-bottom: 10px;">Graphic Designing</h3>
+            <p>Logos, posters, invitations, branding materials and more.</p>
+          </div>
+
+          <div class="service-card">
+            <i class="fas fa-share-alt fa-3x" style="color: #e65100; margin-bottom: 15px;"></i>
+            <h3 class="text-secondary" style="margin-bottom: 10px;">Social Media Management</h3>
+            <p>Creating and managing content for engaging your online audience.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="section-padding bg-pink-light font-segoe">
+      <h2 class="section-title" style="margin-bottom: 90px;">Our Portfolio</h2>
+
+      <div class="slider-container">
+
+        <div class="mySlides fade">
+          <img src="001.jpg" alt="Gallery Image 1" width="500px" height="600px">
+          <div class="text">visiting Card</div>
+        </div>
+
+        <div class="mySlides fade">
+          <img src="13 (2).jpg" alt="Gallery Image 6" width="400px" height="500px">
+          <div class="text">Shop board</div>
+        </div>
+
+        <div class="mySlides fade">
+          <img src="9 (2).jpg" alt="Gallery Image 7" width="400px" height="500px">
+          <div class="text">Wishing card</div>
+        </div>
+
+        <div class="mySlides fade">
+          <img src="10 (2).jpg" alt="Gallery Image 8" width="400px" height="500px">
+          <div class="text">Wishing card</div>
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      </div>
+
+      <div style="text-align:center; padding-top: 20px;">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+      </div>
+
+
+      <h3 style="font-size: 1.8em; color: #d84315; margin-top: 40px; margin-bottom: 20px;">Cinematic Work</h3>
+
+      <div style="display: flex; justify-content: center; flex-wrap: wrap;">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/rwFGEq_PFsY?si=yFpCUl5TvOSHPGs_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div style="display: flex; justify-content: center; flex-wrap: wrap; margin-top: 30px;">
+       <iframe width="560" height="315" src="https://www.youtube.com/embed/BUwLKlCQoVU?si=0596Er4r06l7ZlbN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+     
+    </section>
+
+    <section id="contact" class="section-padding bg-pink-light font-segoe">
+      <div style="max-width: 1100px; margin: auto;">
+        <h2 class="section-title" style="margin-bottom: 30px;">Get In Touch</h2>
+
+        <div class="contact-info-map">
+
+          <div class="contact-details">
+            <h3 class="text-secondary text-center" style="margin-bottom: 20px;">Our Details</h3>
+            <p style="margin-bottom: 15px;"><i class="fas fa-map-marker-alt"
+                style="color: #ff004c; margin-right: 10px;"></i> <strong>Address:</strong> B31, G3 N.H.S Flats,
+              Maligawatta, Colombo-10</p>
+            <p style="margin-bottom: 15px;"><i class="fas fa-phone-alt" style="color: #ff004c; margin-right: 10px;"></i>
+              <strong>Call:</strong> +94 77 292 0406 / +94 77 411 2406
+            </p>
+            <p style="margin-bottom: 15px;"><i class="fas fa-envelope" style="color: #ff004c; margin-right: 10px;"></i>
+              <strong>Email:</strong> 14062021studio@gmail.com
+            </p>
+
+            <h4 class="text-secondary text-center" style="margin-top: 30px; margin-bottom: 15px;">Working Hours</h4>
+            <p>Monday - Saturday: 9:00 AM - 6:00 PM</p>
+            <p>Sunday: Closed (Available for pre-booked events)</p>
+          </div>
+
+          <div class="contact-form">
+            <h3 class="text-secondary text-center" style="margin-bottom: 20px;">Send Us a Message</h3>
+            <form action="https://formsubmit.co/14062021studio@gmail.com" method="POST"
+              style="display: flex; flex-direction: column;">
+              <input type="hidden" name="_subject" value="New Contact Message from Website">
+              <input type="text" name="Name" placeholder="Your Name" required>
+              <input type="email" name="Email" placeholder="Your Email" required>
+              <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+              <button type="submit">Send Message</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="map-container" style="flex: 1 1 100%; margin-top: 40px; text-align: center;">
+          <h4 style="color:#b71c1c; margin-bottom: 15px;">Our Location Map</h4>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.3160408575035!2d79.86591871477317!3d6.974917992010837!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2593f61b7f03f%3A0x6a1a1b1a1b1a1b1a!2sLachumi%20Studio!5e0!3m2!1sen!2slk!4v1628104800000!5m2!1sen!2slk"
+            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="booking" class="section-padding bg-light">
+      <div class="booking-container">
+        <h2>Book Your Session</h2>
+        <form id="form" action="https://formsubmit.co/14062021studio@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="New Booking Request from Website">
+          <input type="hidden" name="_template" value="box">
+          <input type="hidden" name="_captcha" value="false">
+
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="Full Name" required>
+
+          <label for="email">Email</label>
+          <input type="email" id="email" name="Email" required>
+
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="Phone" required>
+
+          <label for="service">Select Service</label>
+          <select id="service" name="Service" required>
+            <option value="">-- Choose a Service --</option>
+            <option value="Photography">Photography</option>
+            <option value="Videography">Videography</option>
+            <option value="Editing">Editing</option>
+            <option value="Web designing">Web Designing</option>
+            <option value="Graphic designing">Graphic Designing</option>
+            <option value="Social media management">Social Media Management</option>
+            <option value="Content creating">Content Creating</option>
+            <option value="Digital marketing">Digital Marketing</option>
+            <option value="Branding">Branding</option>
+            <option value="Consultation">Consultation</option>
+            <option value="Other">Other</option>
+          </select>
+
+          <label for="date">Preferred Date</label>
+          <input type="date" id="date" name="Preferred Date" required>
+
+          <label for="time">Preferred Time</label>
+          <input type="time" id="time" name="Preferred Time" required>
+
+          <label for="details">Event Details/Special Requests</label>
+          <textarea id="details" name="Details" rows="4"
+            placeholder="e.g., Wedding date, birthday package, etc."></textarea>
+
+          <button type="submit">Submit Booking Request</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer style="background-color: #1c1c1c; color: #f0f0f0; padding: 40px 20px; font-family: 'Segoe UI', sans-serif;">
+    <div
+      style="max-width: 1000px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between; text-align: left;">
+
+      <div class="footer-col">
+        <h3 style="color: #ff9800;">Lachumi Studio</h3>
+        <p style="margin-top: 10px;">B31, G3 N.H.S Flats,<br>Maligawatta, Colombo-10</p>
+        <p style="margin-top: 10px;">📞 Call: +94 77 292 0406 / +94 77 411 2406</p>
+        <p>📧 Email: 14062021studio@gmail.com</p>
+      </div>
+
+      <div style="flex: 1 1 200px; margin-bottom: 20px;">
+        <h4 style="color: #ff9800;">Quick Links</h4>
+        <ul style="list-style: none; padding: 0; margin-top: 10px;">
+          <li><a href="#home" class="footer-link">Home</a></li>
+          <li><a href="#about" class="footer-link">About</a></li>
+          <li><a href="#services" class="footer-link">Services</a></li>
+          <li><a href="#gallery" class="footer-link">Gallery</a></li>
+          <li><a href="#contact" class="footer-link">Contact</a></li>
+          <li><a href="#booking" class="footer-link">Booking</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 style="color: #ff9800;">Our Passion</h4>
+        <p style="margin-top: 10px;">"Capturing Moments, Creating Magic"</p>
+        <p style="margin-top: 15px;">Follow us on:</p>
+        <div style="margin-top: 10px;">
+          <a href="https://l.instagram.com/?u=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BejGCjyZ4%2F%3Futm_source%3Dig%26utm_medium%3Dsocial%26utm_content%3Dlink_in_bio&e=AT02VK-l0nwsd0XY9vKowWajxEouBT90204eZ6tAa7nO6S31OciCA35Gv6eim1jffen5vDY7qhjwS4dH6eTDpjfvCTFO1BKrzhsYOUATDg"
+            target="_blank" style="margin-right: 10px;">
+            <img src="https://cdn-icons-png.flaticon.com/24/733/733547.png" alt="Facebook" />
+          </a>
+          <a href="https://www.instagram.com/lachumistudio2406/" target="_blank" style="margin-right: 10px;">
+            <img src="https://cdn-icons-png.flaticon.com/24/733/733558.png" alt="Instagram" />
+          </a>
+          <a href="https://www.youtube.com/@lachumistudio2406" target="_blank" style="margin-right: 10px;">
+            <img src="https://cdn-icons-png.flaticon.com/24/733/733597.png" alt="YouTube" />
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #333;">
+      <p style="font-size: 0.9em;">©
+        <script>document.write(new Date().getFullYear())</script> Lachumi Studio. All Rights Reserved.
+      </p>
+    </div>
+  </footer>
+
+  <button onclick="topFunction()" id="back-to-top" title="Go to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script>
+    // --- Back-to-Top Functionality ---
+    let mybutton = document.getElementById("back-to-top");
+    window.onscroll = function () { scrollFunction() };
+    function scrollFunction() {
+      if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+
+    // --- Image Slider Functionality ---
+    let slideIndex = 1;
+    let autoSlideInterval;
+
+    // Show the first slide and start autoplay
+    showSlides(slideIndex);
+    startAutoSlide();
+
+    // Next/previous controls
+    function plusSlides(n) {
+      // Stop autoplay when user interacts
+      clearInterval(autoSlideInterval);
+      showSlides(slideIndex += n);
+      startAutoSlide(); // Restart autoplay
+    }
+
+    // Dot controls
+    function currentSlide(n) {
+      clearInterval(autoSlideInterval);
+      showSlides(slideIndex = n);
+      startAutoSlide();
+    }
+
+    // Main function to display slides
+    function showSlides(n) {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      let dots = document.getElementsByClassName("dot");
+
+      if (n > slides.length) { slideIndex = 1 }
+      if (n < 1) { slideIndex = slides.length }
+
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active-dot", "");
+      }
+      if (slides.length > 0) {
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active-dot";
+      }
+    }
+
+    // Function to handle automatic sliding
+    function startAutoSlide() {
+      // Set to change slide every 4 seconds (4000ms)
+      autoSlideInterval = setInterval(function () {
+        // Automatically move to the next slide, looping to the first slide after the last one
+        showSlides(slideIndex = (slideIndex % document.getElementsByClassName("mySlides").length) + 1);
+      }, 4000);
+    }
+  </script>
+</body>
+
+</html>
