@@ -18,6 +18,6 @@ set = []
 for i in range(0,size):
     n = input("Enter element: ")
     set.append(n)
-s
+
 printPowerSet(set,size)
 
