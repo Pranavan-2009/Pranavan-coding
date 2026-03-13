@@ -1,18 +1,17 @@
-# def swap1(a,b):
+def swap1(a,b):
     
-#     a = a ^ b
-#     b = a ^ b
-#     c = a ^ b
-#     print("After swapping: a =", a, "b =", b)
-
-# def swap2(a,b):
-#         a = (a & b) + (a | b)
-#         b = a + (~b) + 1
-#         a = a + (~b) + 1
-#         print("After swapping: a =", a, "b =", b)
+     a = a ^ b
+     b = a ^ b
+     c = a ^ b
+     print("After swapping: a =", a, "b =", b)
+def swap2(a,b):
+         a = (a & b) + (a | b)
+         b = a + (~b) + 1
+         a = a + (~b) + 1
+         print("After swapping: a =", a, "b =", b)
     
-# swap1(3,4)
-# swap2(3,4)
+swap1(3,4)
+swap2(3,4)
 
 def divide(ourDividend, ourDivisor):
 
