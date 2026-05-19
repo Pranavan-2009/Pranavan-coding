@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cards</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<script src=
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+</script>
+<body>
+    <div class="container">
+        <div class="card-img-top" style="width: 18rem;">
+            <img class="card-img-top" src="data:image/png;base64,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"  alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">User name</h5>
+                <p class="card-text">Passionate about programming.</p>
+                <a href="#" class="btn btn-primary">See profile</a>
+            </div>
+        </div>
+    </div>
+    <br><br><br><br>
+
+    <div class="container">
+  <h2>Spinners</h2>
+  <p>To create a spinner/loader, use the <code>.spinner-border</code> class:</p>
+  <div class="spinner-border"></div>
+</div>
+
+
+
+    <br><br><br>
+
+    <div class="container">
+         <h2>Pagination </h2>
+         <p>Fall in love with coding</p>
+         <ul class="pagination">
+            <li class="page-item">
+               <a class="page-link" href="#">Previous</a> 
+            </li>
+            <li class="page-item">
+               <a class="page-link" href="#">1</a> 
+            </li>
+            <li class="page-item">
+               <a class="page-link" href="#">2</a> 
+            </li>
+            <li class="page-item">
+               <a class="page-link" href="#">3</a> 
+            </li>
+            <li class="page-item">
+               <a class="page-link" href="#">4</a> 
+            </li>
+            <li class="page-item">
+               <a class="page-link" href="#">5</a> 
+            </li>
+            <li class="page-item">
+               <a class="page-link" href="#">6</a> 
+            </li>
+            <li class="page-item">
+               <a class="page-link" href="#">7</a> 
+            </li>
+            <li class="page-item">
+               <a class="page-link" href="#">8</a> 
+            </li>
+            <li class="page-item">
+               <a class="page-link" href="#">9</a> 
+            </li>
+            <li class="page-item">
+               <a class="page-link" href="#">10</a> 
+            </li>
+            <li class="page-item">
+               <a class="page-link" href="#">11</a> 
+            </li>
+            <li class="page-item">
+               <a class="page-link" href="#">12</a> 
+            </li>
+            <li class="page-item">
+               <a class="page-link" href="#">Next</a> 
+            </li>
+
+
+         </ul>
+    </div>
+
+</body>
+</html>
