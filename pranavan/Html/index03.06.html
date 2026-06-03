@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="add(2,4)">Click me</button>
+    <p id="add"></p>
+    <button onclick="ad(8,4)">Click me</button>
+    <p id="ad"></p>
+    <button onclick="a(4,2)">Click me</button>
+    <p id="a"></p>
+    <button onclick="cc(0,2)">Click me</button>
+    <p id="cc"></p>
+
+    <!-- <button onclick="greet('Raj')">Click me</button> -->
+    <script>
+
+        function add(x,y){
+            document.getElementById("add").innerHTML = x+y;
+        }
+        function ad(x,y){
+            document.getElementById("ad").innerHTML = x-y;
+        }
+        function a(x,y){
+            document.getElementById("a").innerHTML = x/y;
+        }
+        function cc(x,y){
+            document.getElementById("cc").innerHTML = x*y;
+        }
+
+
+
+        // function greet(name){
+        //     document.write("wellcome to our website", name)
+        // }
+       
+    </script>
+
+</body>
+</html>
