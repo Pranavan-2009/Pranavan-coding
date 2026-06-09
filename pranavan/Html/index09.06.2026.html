@@ -6,6 +6,29 @@
     <title>Document</title>
 </head>
 <body>
+    <!-- <h2>Javascript</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, corporis autem in culpa hic impedit ullam dolorum? Sapiente, quaerat explicabo.</p>
+    <script>
+        var str = "AmAzing";
+        document.write(str.toUpperCase());
+        document.write("<br>");
+        document.write(str.toLowerCase());
+        document.write("<br>");
+        document.write(str.startsWith("b"));
+        document.write("<br>");
+    </script> -->
+
+    <h2>Javascript 2</h2>
+    <p id="demo"></p>
+    <script>
+        var fruits = ["Banana", "Orange", "Apple", "Mango", "Kiwi"];
+        var text = "";
+        var i;
+        for (i=0; i < fruits.length; i++) {
+            text += fruits[i] + "<br>";
+        }
+        document.getElementById("demo").innerHTML = text;
+    </script>
     
 </body>
 </html>
