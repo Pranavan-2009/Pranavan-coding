@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <!-- <h2>Javascript</h2>
+    <h2>Javascript</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, corporis autem in culpa hic impedit ullam dolorum? Sapiente, quaerat explicabo.</p>
     <script>
         var str = "AmAzing";
@@ -16,7 +16,7 @@
         document.write("<br>");
         document.write(str.startsWith("b"));
         document.write("<br>");
-    </script> -->
+    </script>
 
     <h2>Javascript 2</h2>
     <p id="demo"></p>
@@ -28,6 +28,35 @@
             text += fruits[i] + "<br>";
         }
         document.getElementById("demo").innerHTML = text;
+    </script>
+
+    <h2>Javascript 3</h2>
+    <p id="demo"></p>
+    <script>
+        var day;
+        switch (new Date().getDay()){
+                case 0:
+                day = "Sunday";
+                break;
+                case 1:
+                day = "Monday";
+                break;
+                case 2:
+                day = "Tuesday";
+                break;
+                case 3:
+                day = "Wednesday";
+                break;
+                case 4:
+                day = "Thursday";
+                break;
+                case 5:
+                day = "Friday";
+                break;
+                case 6:
+                day = "Saturday";
+        }
+        document.getElementById("demo").innerHTML = "Today is " + day;
     </script>
     
 </body>
