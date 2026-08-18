@@ -1,25 +1,35 @@
 import turtle
 screen = turtle.Screen()
 screen.bgcolor("black")
-screen.title("Neon Mundala")
+screen.title("Colour Loop Artwork")
 
+artist = turtle.Turtle()
+artist.speed("fastest")
+artist.hideturtle()
+artist.pensize(2)
 
-board = turtle.Turtle()
-board.speed("fastest")
-board.hideturtle()
+def draw_petal(size, colour):
+    artist.color(colour)
+    artist.begin_fill()
 
-colors = ["red", "orange", "yellow", "lime", "cyan", "violet", "pink", "white"]
-for i in range(90):
-    board.color(colors[i%len(colors)])
-    board.width(2)
-    board.forward(200)
-    board.left(91)
-    board.right(91)
-    board.left(91)
-    board.left(91)
-    board.right(91)
-    board.left(91)
-    board.left(91)
-    board.right(91)
+    for _ in range(2):
+        artist.circle(size, 60)
+        artist.left(120)
+
+colours = ["red", "orange", "yellow", "lime", "cyan", "blue", "magenta"]
+
+for i in range(36):
+    draw_petal(90, colours[i % len(colours)])
+    artist.right(10)
+
+artist.penup()
+artist.goto(0, -25)
+artist.pendown()
+
+artist.color("white")
+artist.begin_fill()
+artist.circle(25)
+artist.end_fill()
+
 
 turtle.done()
