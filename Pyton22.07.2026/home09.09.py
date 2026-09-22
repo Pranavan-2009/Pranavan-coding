@@ -50,8 +50,7 @@ instrument_2 = Drum("Bass Drum", "Percussion Instrument", "large drum")
 instrument_3 = Flute("Bamboo Flute", "Wind Instrument", "bamboo")
 
 
-print("===== Music Instrument Sound Show =====
-")
+print("===== Music Instrument Sound Show =====\n")
 instrument_1.display_info()
 instrument_1.play_sound()
 
