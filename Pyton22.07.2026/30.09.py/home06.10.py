@@ -18,21 +18,15 @@ print("================================")
 # ------------------------------------------------
  
 science_notes = [
-    "Plants need sunlight and water
-",
-    "The Earth moves around the Sun
-",
-    "Water can change into ice and steam
-"
+    "Plants need sunlight and water",
+    "The Earth moves around the Sun",
+    "Water can change into ice and steam"
 ]
  
 maths_notes = [
-    "Addition means finding the total
-",
-    "Subtraction means taking away
-",
-    "Multiplication is repeated addition
-"
+    "Addition means finding the total",
+    "Subtraction means taking away",
+    "Multiplication is repeated addition"
 ]
  
 with open("science-notes.txt", "w") as f:
@@ -48,8 +42,7 @@ print("Sample notes files created successfully.")
 # PART 1 - READ FILE USING with open() as f
 # ------------------------------------------------
  
-print("
-PART 1: Science Notes")
+print("PART 1: Science Notes")
  
 with open("science-notes.txt", "r") as f:
     for line in f:
@@ -60,8 +53,7 @@ with open("science-notes.txt", "r") as f:
 # PART 2 - USE split() TO COUNT WORDS
 # ------------------------------------------------
  
-print("
-PART 2: Word Count in Maths Notes")
+print("PART 2: Word Count in Maths Notes")
  
 with open("maths-notes.txt", "r") as f:
     for line in f:
@@ -75,8 +67,7 @@ with open("maths-notes.txt", "r") as f:
  
 merged_file = "all-study-notes.txt"
  
-print("
-PART 3: Checking Merged File")
+print("PART 3: Checking Merged File")
  
 if os.path.exists(merged_file):
     print(merged_file, "already exists.")
@@ -88,8 +79,7 @@ else:
 # PART 4 - REMOVE OLD MERGED FILE IF IT EXISTS
 # ------------------------------------------------
  
-print("
-PART 4: Remove Old File")
+print("PART 4: Remove Old File")
  
 if os.path.exists(merged_file):
     os.remove(merged_file)
@@ -102,19 +92,15 @@ else:
 # PART 5 - MERGE TWO FILES INTO ONE
 # ------------------------------------------------
  
-print("
-PART 5: Merging Files")
+print("PART 5: Merging Files")
  
 with open(merged_file, "w") as output:
-    output.write("=== SCIENCE NOTES ===
-")
+    output.write("=== SCIENCE NOTES ===")
  
     with open("science-notes.txt", "r") as science:
         output.write(science.read())
  
-    output.write("
-=== MATHS NOTES ===
-")
+    output.write("=== MATHS NOTES ===")
  
     with open("maths-notes.txt", "r") as maths:
         output.write(maths.read())
@@ -126,8 +112,7 @@ print("Science and Maths notes merged successfully.")
 # PART 6 - DISPLAY MERGED FILE
 # ------------------------------------------------
  
-print("
-Merged Study Notes:")
+print("Merged Study Notes:")
  
 with open(merged_file, "r") as f:
     for line in f:
@@ -136,8 +121,7 @@ with open(merged_file, "r") as f:
  
 # FINAL SUMMARY
  
-print("
-================================")
+print("================================")
 print("STUDY NOTES ORGANIZER SUMMARY")
 print("================================")
 print("with open() as f: Used for safe file handling.")
